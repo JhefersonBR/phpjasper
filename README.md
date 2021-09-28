@@ -15,7 +15,7 @@ Or in your file'composer.json' add:
 ```json
 {
     "require": {
-        "jheferson-br/phpjasper": "^3.2.0"
+        "jheferson-br/phpjasper": "^3.2.7"
     }
 }
 ```
