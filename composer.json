@@ -1,6 +1,6 @@
 {
-  "name": "geekcom/phpjasper",
-  "description": "A PHP report generator",
+  "name": "jheferson-br/phpjasper",
+  "description": "A simplified, easy-to-implement PHP report generator",
   "license": "MIT",
   "keywords": [
     "reports",
@@ -9,9 +9,8 @@
   ],
   "authors": [
     {
-      "name": "Daniel Rodrigues Lima",
-      "email": "geekcom@php.net",
-      "role": "lead"
+      "name": "Jheferson Fonseca Gonçalves",
+      "email": "play_jheferson@hotmail.com"
     }
   ],
   "minimum-stability": "stable",
@@ -26,24 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "PHPJasper\\": "src/"
+      "": "src/"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "PHPJasper\\Test\\": "tests/"
-    }
-  },
-  "scripts": {
-    "phpcs": "phpcs --standard=PSR12 -n src",
-    "phpstan": "phpstan analyse src --level 0",
-    "phpcbf": "phpcbf --standard=PSR12 -n src",
-    "unit": "phpunit --coverage-clover ./tests/log/clover.xml --colors=always",
-    "testdox": "phpunit --testdox",
-    "test": [
-      "@phpcs",
-      "@phpstan",
-      "@unit"
-    ]
   }
 }
