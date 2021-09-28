@@ -160,7 +160,7 @@ class PHPJasper
         $returnVar = 0;
 
         chdir($this->pathExecutable);
-        $eturnVar = shell_exec($this->command);
+        $returnVar = shell_exec($this->command);
         
         if ($returnVar) {
             throw new Exception($returnVar);
