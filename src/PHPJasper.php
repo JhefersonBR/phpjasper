@@ -209,12 +209,11 @@ class PHPJasper
         $this->validateExecute();
         $this->addUserToCommand($user);
 
-        $output = [];
         $returnVar = 0;
 
         chdir($this->pathExecutable);
-        exec($this->command, $output, $returnVar);
-
+        $eturnVar = shell_exec($this->command);
+        
         if ($returnVar !== 0) {
             throw new Exception($returnVar);
         }
