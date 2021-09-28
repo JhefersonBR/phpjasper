@@ -2,29 +2,14 @@
 class PHPJasper
 {
 
-    /**
-     * @var string
-     */
     protected $command;
 
-    /**
-     * @var string
-     */
     protected $executable;
 
-    /**
-     * @var string
-     */
     protected $pathExecutable;
 
-    /**
-     * @var bool
-     */
     protected $windows;
 
-    /**
-     * @var array
-     */
     protected $formats = [
         'pdf',
         'rtf',
@@ -41,9 +26,6 @@ class PHPJasper
         'jrprint'
     ];
 
-    /**
-     * PHPJasper constructor
-     */
     public function __construct()
     {
         $this->executable = 'jasperstarter';
@@ -51,20 +33,11 @@ class PHPJasper
         $this->windows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? true : false;
     }
 
-    /**
-     * @return string
-     */
     private function checkServer()
     {
         return $this->command = $this->windows ? $this->executable : $this->executable;
     }
 
-    /**
-     * @param string $input
-     * @param string $output optional
-     * @return $this
-     * @throws Exception\InvalidInputFile
-     */
     public function compile(string $input, string $output = '')
     {
         if (!is_file($input)) {
@@ -82,14 +55,6 @@ class PHPJasper
         return $this;
     }
 
-    /**
-     * @param string $input
-     * @param string $output
-     * @param array $options
-     * @return $this
-     * @throws Exception\InvalidInputFile
-     * @throws Exception\InvalidFormat
-     */
     public function process(string $input, string $output, array $options = [])
     {
         $options = $this->parseProcessOptions($options);
@@ -148,10 +113,6 @@ class PHPJasper
         return $this;
     }
 
-    /**
-     * @param array $options
-     * @return array
-     */
     protected function parseProcessOptions(array $options)
     {
         $defaultOptions = [
@@ -165,10 +126,6 @@ class PHPJasper
         return array_merge($defaultOptions, $options);
     }
 
-    /**
-     * @param $format
-     * @throws Exception\InvalidFormat
-     */
     protected function validateFormat($format)
     {
         if (!is_array($format)) {
@@ -182,11 +139,6 @@ class PHPJasper
         }
     }
 
-    /**
-     * @param string $input
-     * @return $this
-     * @throws \Exception
-     */
     public function listParameters(string $input)
     {
         if (!is_file($input)) {
@@ -200,10 +152,6 @@ class PHPJasper
         return $this;
     }
 
-    /**
-     * @param bool $user
-     * @return mixed
-     */
     public function execute($user = false)
     {
         $this->validateExecute();
@@ -221,27 +169,16 @@ class PHPJasper
         return $output;
     }
 
-    /**
-     * @return string
-     */
     public function output()
     {
         return $this->command;
     }
 
-    /**
-     * Prints the command.
-     *
-     * @return void
-     */
     public function printOutput()
     {
         print $this->command . "\n";
     }
 
-    /**
-     * @param $user
-     */
     protected function addUserToCommand($user)
     {
         if ($user && !$this->windows) {
