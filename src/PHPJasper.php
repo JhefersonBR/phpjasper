@@ -44,6 +44,9 @@ class PHPJasper
             throw new Exception('Invalid Input File');
         }
 
+        $input = realpath($input);
+        $output = ($output) ? realpath($output): $output;
+
         $this->command = $this->checkServer();
         $this->command .= ' compile ';
         $this->command .= '"' . realpath($input) . '"';
@@ -62,6 +65,9 @@ class PHPJasper
         if (!$input) {
             throw new Exception('Invalid Input File');
         }
+
+        $input = realpath($input);
+        $output = ($output) ? realpath($output): $output;
 
         $this->validateFormat($options['format']);
 
@@ -157,16 +163,13 @@ class PHPJasper
         $this->validateExecute();
         $this->addUserToCommand($user);
 
-        $returnVar = 0;
-
-        chdir($this->pathExecutable);
         $returnVar = shell_exec($this->command);
         
         if ($returnVar) {
             throw new Exception($returnVar);
         }
 
-        return $output;
+        return $returnVar;
     }
 
     public function output()
