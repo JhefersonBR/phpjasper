@@ -13,7 +13,7 @@
       "email": "play_jheferson@hotmail.com"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {
     "php": "^7.2|^8.0"
   },
