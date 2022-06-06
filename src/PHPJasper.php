@@ -35,7 +35,7 @@ class PHPJasper
 
     private function checkServer()
     {
-        return $this->command = $this->windows ? $this->executable : $this->executable;
+        return $this->command = $this->windows ? $this->pathExecutable . '\\' . $this->executable : $this->pathExecutable . '/' . $this->executable;
     }
 
     public function compile(string $input, string $output = '')
